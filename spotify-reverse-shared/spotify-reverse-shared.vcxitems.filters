@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="shared">
+      <UniqueIdentifier>{5d537fd7-01fa-4df3-8f84-d5fef69a414d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)shared\logger.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)shared\logo.h" />
+  </ItemGroup>
+</Project>
