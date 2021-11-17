@@ -16,6 +16,10 @@ Unspotify is a project that removes advertising, restrictions in the Spotify cli
 
 Open the folder where Spotify is installed (%APPDATA%/Spotify) and rename Spotify.exe to oSpotify.exe then put spotify.exe & spotify-reverse.dll from the archive to this folder.
 
+## Showcase (YT VIDEO)
+
+[![Watch the video](https://img.youtube.com/vi/_TStlwGfBpo/maxresdefault.jpg)](https://youtu.be/_TStlwGfBpo)
+
 ## License
 
 ```
