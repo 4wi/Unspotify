@@ -4,12 +4,19 @@
 #include "../hooks/hooks.h"
 #include "shared/logo.h"
 
+#include <string>
+#include <iostream>
+
 
 namespace bootstrap {
 	DWORD __stdcall _initial_routine( HANDLE ) {
 		util::logo::create_console_and_draw_logo( );
 		spotify::init( );
 		hooks::init( );
+
+		util::logger::warn( "press any key to close this console" );
+		_getwch( );
+		util::logger::detach( );
 
 	#ifndef _DEBUG
 		for ( ;;) {

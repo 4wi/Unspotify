@@ -67,11 +67,16 @@ namespace util {
 			MessageBoxA( NULL, buf, "Unspotify", MB_OK );
 		}
 
-		inline void startup( ) {
-			AllocConsole( );
+		__forceinline void startup( ) {
+			::AllocConsole( );
 			freopen_s( reinterpret_cast< FILE** >( stdin ), "CONIN$", "r", stdin );
 			freopen_s( reinterpret_cast< FILE** >( stdout ), "CONOUT$", "w", stdout );
-			SetConsoleTitleA( "Unspotify" );
+			::SetConsoleTitleA( "Unspotify" );
+		}
+
+		__forceinline void detach( ) {
+			::ShowWindow( ::GetConsoleWindow( ), SW_HIDE );
+			::FreeConsole( ); 
 		}
 	}
 }
