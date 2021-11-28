@@ -1,4 +1,5 @@
 #include "bootstrap/bootstrap.h"
+#include <cstdint>
 
 
 BOOL __stdcall DllMain( std::uintptr_t hinstDll, std::uint32_t fdwReason, std::uintptr_t ) {

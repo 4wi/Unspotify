@@ -4,6 +4,7 @@
 #include <Windows.h>
 #include <functional>
 
+
 #define L_ERROR(...) util::logger::error(__FUNCTION__ "(): " __VA_ARGS__);
 #define TRACE_FN util::logger::debug( "%s()", __FUNCTION__ );
 
@@ -64,7 +65,9 @@ namespace util {
 		CREATE_LOGGER_METHOD( error );
 		inline void fatal( const char* fmt, ... ) {
 			LOGGER_PARSE_FMT;
-			MessageBoxA( NULL, buf, "Unspotify", MB_OK );
+			error( "Fatal error: %s", buf );
+			MessageBoxA( NULL, buf, "Unspotify fatal error", MB_OK );
+			ExitProcess( -1 );
 		}
 
 		__forceinline void startup( ) {
@@ -76,7 +79,7 @@ namespace util {
 
 		__forceinline void detach( ) {
 			::ShowWindow( ::GetConsoleWindow( ), SW_HIDE );
-			::FreeConsole( ); 
+			::FreeConsole( );
 		}
 	}
 }

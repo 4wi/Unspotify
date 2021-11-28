@@ -57,7 +57,7 @@
     <ClCompile Include="hooks\hooked\debug_msg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="hooks\hooked\play_track.cpp">
+    <ClCompile Include="hooks\hooked\create_track.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -4,25 +4,25 @@
 #include "../hooks/hooks.h"
 #include "shared/logo.h"
 
-#include <string>
-#include <iostream>
+#include <thread>
 
 
 namespace bootstrap {
 	DWORD __stdcall _initial_routine( HANDLE ) {
 		util::logo::create_console_and_draw_logo( );
+
 		spotify::init( );
 		hooks::init( );
 
+	#ifdef _DEBUG
+		while ( !GetAsyncKeyState( VK_DELETE ) ) {
+		#else
 		util::logger::warn( "press any key to close this console" );
 		_getwch( );
 		util::logger::detach( );
 
-	#ifndef _DEBUG
-		for ( ;;) {
-	#else
-		while ( !GetAsyncKeyState( VK_DELETE ) ) {
-	#endif
+		while ( true ) {
+		#endif
 			std::this_thread::sleep_for( std::chrono::milliseconds( 10 ) );
 		}
 

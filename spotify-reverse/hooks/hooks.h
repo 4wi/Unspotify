@@ -5,14 +5,18 @@
 
 namespace hooks {
 	namespace hooked {
+	#ifdef _DEBUG
 		std::uintptr_t __cdecl debug_msg( std::uint32_t, std::uint32_t, const char* win, const char* flag, std::uint32_t size, std::uint32_t, const char* fmt, ... );
+	#endif
 		std::uintptr_t __cdecl get_ad( int a1, int a2 );
-		std::uintptr_t __fastcall play_track( std::uintptr_t pthis, std::uintptr_t pEDX, spotify::structs::player_meta_t* player_meta, spotify::structs::player_track_meta_t* track_meta, char a4, int a5, char a6, int a7, int a8, char a9, char a10, int a11, char a12, int a13 );
+		void __fastcall create_track( void* pthis, void* pedx, spotify::structs::player_meta_t* player_meta, spotify::structs::player_track_meta_t* track_meta, int a4, int a5, int a6, int a7, int a8, int a9, int a10 );
 	}
 	namespace original {
+	#ifdef _DEBUG
 		inline decltype( &hooked::debug_msg ) debug_msg;
+	#endif
 		inline decltype( &hooked::get_ad ) get_ad;
-		inline decltype( &hooked::play_track ) play_track;
+		inline decltype( &hooked::create_track ) create_track;
 	}
 
 	void init( );

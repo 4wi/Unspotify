@@ -63,8 +63,8 @@ namespace util::mem {
 		}
 
 		template <typename t = uint32_t>
-		inline memory_address_t relative_asm_address( ptr_type offset ) {
-			return this->add( this->add( offset ).read<t>( ) ).add( offset + sizeof( t ) );
+		inline memory_address_t rel( ptr_type offset ) {
+			return this->add( this->add( offset ).template read<t>( ) ).add( offset + sizeof( t ) );
 		}
 
 		//
@@ -92,7 +92,27 @@ namespace util::mem {
 			return *this;
 		}
 
-		inline bool valid( ) { return static_cast< bool >( m_ptr ); }
+		memory_address_t<ptr_type> walk_until( uint8_t byte ) {
+			constexpr int max_iterations = 1000;
+			for ( int i = 0; i < max_iterations; i++ ) {
+				if ( offset( i ).template read<uint8_t>( ) != byte )
+					continue;
+				return offset( i );
+			}
+			return memory_address_t<ptr_type>( );
+		}
+
+		memory_address_t<ptr_type> walk_back_until( uint8_t byte ) {
+			constexpr int max_iterations = 1000;
+			for ( int i = 1; i < max_iterations; i++ ) {
+				if ( offset( -i ).template read<uint8_t>( ) != byte )
+					continue;
+				return offset( -i );
+			}
+			return memory_address_t<ptr_type>( );
+		}
+
+		inline bool valid( ) { return static_cast< bool >( m_ptr ) && m_ptr > 15; }
 
 		ptr_type raw( ) { return m_ptr; }
 

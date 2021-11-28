@@ -1,6 +1,6 @@
 #pragma once
-
 #include "../util/util.h"
+
 
 namespace spotify {
 	namespace structs {
@@ -20,13 +20,11 @@ namespace spotify {
 	}
 
 	namespace addr {
+	#ifdef _DEBUG
 		inline util::mem::addr_t debug_msg;
+	#endif
 		inline util::mem::addr_t get_ad;
-
-		inline util::mem::addr_t play_track;
-		inline util::mem::addr_t play_track_table_mov;
-		inline util::mem::addr_t play_track_table;
-		inline util::mem::addr_t play_track_fn_addr;
+		inline util::mem::addr_t create_track;
 	}
 
 	void init( );

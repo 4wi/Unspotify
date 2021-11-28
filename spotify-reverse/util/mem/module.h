@@ -26,9 +26,11 @@ namespace util::mem {
 		// pattern scan related
 	public:
 		mem::addr_t sig( std::string_view pattern ) {
-			unsigned long image_size = get_nt_headers( )->OptionalHeader.SizeOfImage;
+			return sig( pattern_to_byte( pattern ) );
+		}
 
-			std::vector<int> pattern_bytes = pattern_to_byte( pattern );
+		mem::addr_t sig( std::vector<int> pattern_bytes ) {
+			unsigned long image_size = get_nt_headers( )->OptionalHeader.SizeOfImage;
 			int* pattern_data = pattern_bytes.data( );
 			size_t pattern_size = pattern_bytes.size( );
 

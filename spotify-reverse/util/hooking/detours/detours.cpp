@@ -2,20 +2,16 @@
 
 
 namespace util::hooking::detour {
-	void init( ) {
-		MH_Initialize( );
+	bool init( ) {
+		return MH_Initialize( ) == MH_OK;
 	}
 
-	void create( mem::addr_t& target, void* detour, void** orig ) {
-		return create( target.cast<void*>( ), detour, orig );
+	bool create( void* target, void* detour, void** orig ) {
+		return MH_CreateHook( target, detour, orig ) == MH_OK &&
+			MH_EnableHook( target ) == MH_OK;
 	}
 
-	void create( void* target, void* detour, void** orig ) {
-		if ( MH_CreateHook( target, detour, orig ) != MH_OK ) __debugbreak( );
-		if ( MH_EnableHook( target ) != MH_OK ) __debugbreak( );
-	}
-
-	void remove( void* target ) {
-		if ( MH_DisableHook( target ) != MH_OK ) __debugbreak( );
+	bool remove( void* target ) {
+		return MH_DisableHook( target ) == MH_OK;
 	}
 }
