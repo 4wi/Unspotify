@@ -9,7 +9,7 @@ namespace hooks {
 		std::uintptr_t __cdecl debug_msg( std::uint32_t, std::uint32_t, const char* win, const char* flag, std::uint32_t size, std::uint32_t, const char* fmt, ... );
 	#endif
 		std::uintptr_t __cdecl get_ad( int a1, int a2 );
-		void __fastcall create_track( void* pthis, void* pedx, spotify::structs::player_meta_t* player_meta, spotify::structs::player_track_meta_t* track_meta, int a4, int a5, int a6, int a7, int a8, int a9, int a10 );
+		void __fastcall create_track( void* pthis, void* pedx, spotify::structs::player_meta_t* player_meta, spotify::structs::player_track_meta_t* track_meta, double speed, int normalization, int urgency, int track_select_flag, int flag, int stream_type );
 	}
 	namespace original {
 	#ifdef _DEBUG

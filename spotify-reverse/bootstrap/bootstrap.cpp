@@ -16,13 +16,13 @@ namespace bootstrap {
 
 	#ifdef _DEBUG
 		while ( !GetAsyncKeyState( VK_DELETE ) ) {
-		#else
+	#else
 		util::logger::warn( "press any key to close this console" );
 		_getwch( );
 		util::logger::detach( );
 
 		while ( true ) {
-		#endif
+	#endif
 			std::this_thread::sleep_for( std::chrono::milliseconds( 10 ) );
 		}
 
