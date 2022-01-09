@@ -11,6 +11,8 @@
 
 namespace util {
 	namespace networking {
+		constexpr const char* err_json_data = "{\"error\": \"Unable to connect to server\"}";
+
 		nlohmann::json get( const char* domain, const char* url );
 	}
 }

@@ -3,8 +3,9 @@
 
 
 namespace bootstrap {
-	namespace _ {
+	namespace detail {
 		inline HINSTANCE dll_handle;
+		inline DWORD region_size;
 	}
 
 	DWORD __stdcall _initial_routine( HANDLE );

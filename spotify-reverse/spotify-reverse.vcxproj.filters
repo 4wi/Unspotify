@@ -66,6 +66,9 @@
     <ClCompile Include="updates\updates.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="exceptions\exceptions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util\util.h">
@@ -126,6 +129,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="updates\updates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="exceptions\exceptions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

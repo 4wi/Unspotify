@@ -3,6 +3,7 @@
 #include "../spotify/spotify.h"
 #include "../hooks/hooks.h"
 #include "../updates/updates.h"
+#include "../exceptions/exceptions.h"
 #include "shared/logo.h"
 
 #include <thread>
@@ -11,6 +12,8 @@
 namespace bootstrap {
 	DWORD __stdcall _initial_routine( HANDLE ) {
 		util::logo::create_console_and_draw_logo( );
+
+		exceptions::subscribe( );
 
 	#ifdef CHECK_FOR_UPDATES
 		updates::do_job( );
@@ -36,13 +39,14 @@ namespace bootstrap {
 	}
 
 	bool startup( HINSTANCE dll_handle ) {
-		_::dll_handle = dll_handle;
+		detail::dll_handle = dll_handle;
+		detail::region_size = util::mem::module_t( uintptr_t( dll_handle ) ).get_nt_headers( )->OptionalHeader.SizeOfImage;
 		CreateThread( nullptr, 0, _initial_routine, 0, 0, nullptr );
 		return true;
 	}
 
 	void _shutdown( ) {
 		hooks::shutdown( );
-		FreeLibraryAndExitThread( reinterpret_cast< HMODULE >( _::dll_handle ), 0x1 );
+		FreeLibraryAndExitThread( reinterpret_cast< HMODULE >( detail::dll_handle ), 0x1 );
 	}
 }

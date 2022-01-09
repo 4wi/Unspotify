@@ -2,6 +2,10 @@
 #include "logger.h"
 
 
+#define UNSPOTIFY_GIT_URL "https://git.tcp.direct/dg/Unspotify"
+#define UNSPOTIFY_DISCORD_URL "https://discord.gg/U7X9kKcJzF"
+
+
 namespace util {
     namespace logo {
         inline void create_console_and_draw_logo( ) {
@@ -16,8 +20,9 @@ namespace util {
             util::logger::info( "                             88P'                                          )88" );
             util::logger::info( "                            d88                                           ,d8P" );
             util::logger::info( "                            ?8P                                        `?888P " );
-            util::logger::info( "                by es3n.in | compiled at %s %s", __DATE__, __TIME__ );
-            util::logger::info( "                git: https://git.tcp.direct/dg/Unspotify" );
+            util::logger::info( "                compiled at %s %s", __DATE__, __TIME__ );
+            util::logger::info( "                git: %s", UNSPOTIFY_GIT_URL );
+            util::logger::info( "                join our discord: %s", UNSPOTIFY_DISCORD_URL );
             util::logger::info( "" );
             util::logger::info( "" );
         }

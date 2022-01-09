@@ -12,6 +12,7 @@ namespace util::mem {
 		//
 		// constructors, etc...
 		module_t( ) : m_addr( ) { };
+		module_t( uintptr_t s ) : m_addr( s ) { };
 		module_t( const char* module_name ) : m_addr( GetModuleHandleA( module_name ) ) { };
 		~module_t( ) = default;
 
@@ -59,7 +60,7 @@ namespace util::mem {
 		bool safe( std::uintptr_t ptr ) {
 			return ptr >= m_addr && ptr <= m_addr.add( get_nt_headers( )->OptionalHeader.SizeOfImage );
 		}
-	protected:
+	public:
 		IMAGE_DOS_HEADER* get_dos_headers( ) {
 			return m_addr.ptr<IMAGE_DOS_HEADER>( );
 		}

@@ -109,6 +109,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -149,6 +150,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -181,6 +183,7 @@
   <ItemGroup>
     <ClCompile Include="bootstrap\bootstrap.cpp" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="exceptions\exceptions.cpp" />
     <ClCompile Include="hooks\hooked\debug_msg.cpp" />
     <ClCompile Include="hooks\hooked\get_ad.cpp" />
     <ClCompile Include="hooks\hooked\create_track.cpp" />
@@ -199,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bootstrap\bootstrap.h" />
+    <ClInclude Include="exceptions\exceptions.h" />
     <ClInclude Include="hooks\hooks.h" />
     <ClInclude Include="spotify\spotify.h" />
     <ClInclude Include="updates\updates.h" />

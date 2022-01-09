@@ -8,7 +8,7 @@ namespace updates {
 			return update_info_t {
 				.m_error = true,
 				.m_error_desc = data[ "error" ].get<std::string>( )
-		};
+			};
 
 		return update_info_t {
 			.m_error = false,
