@@ -60,6 +60,12 @@
     <ClCompile Include="hooks\hooked\create_track.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="util\networking\networking.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="updates\updates.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="util\util.h">
@@ -108,6 +114,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="hooks\hooks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util\networking\networking.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util\networking\ext\json.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="defines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="updates\updates.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

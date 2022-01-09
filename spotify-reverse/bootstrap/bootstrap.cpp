@@ -2,6 +2,7 @@
 #include "../util/util.h"
 #include "../spotify/spotify.h"
 #include "../hooks/hooks.h"
+#include "../updates/updates.h"
 #include "shared/logo.h"
 
 #include <thread>
@@ -10,6 +11,10 @@
 namespace bootstrap {
 	DWORD __stdcall _initial_routine( HANDLE ) {
 		util::logo::create_console_and_draw_logo( );
+
+	#ifdef CHECK_FOR_UPDATES
+		updates::do_job( );
+	#endif
 
 		spotify::init( );
 		hooks::init( );

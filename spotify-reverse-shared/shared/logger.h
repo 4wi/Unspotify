@@ -8,7 +8,7 @@
 #define L_ERROR(...) util::logger::error(__FUNCTION__ "(): " __VA_ARGS__);
 #define TRACE_FN util::logger::debug( "%s()", __FUNCTION__ );
 
-#define LOGGER_PARSE_FMT  char buf[1024]; va_list va; va_start( va, fmt ); _vsnprintf_s( buf, 1024, fmt, va ); va_end( va );
+#define LOGGER_PARSE_FMT  char buf[2048]; va_list va; va_start( va, fmt ); _vsnprintf_s( buf, 1024, fmt, va ); va_end( va );
 #define CREATE_LOGGER_METHOD(n) inline void n(const char* fmt, ...) { LOGGER_PARSE_FMT; log( #n, e_level_color::level_color_ ##n, buf ); }
 
 

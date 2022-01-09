@@ -186,6 +186,7 @@
     <ClCompile Include="hooks\hooked\create_track.cpp" />
     <ClCompile Include="hooks\hooks.cpp" />
     <ClCompile Include="spotify\spotify.cpp" />
+    <ClCompile Include="updates\updates.cpp" />
     <ClCompile Include="util\hooking\detours\detours.cpp" />
     <ClCompile Include="util\hooking\detours\mh\buffer.c" />
     <ClCompile Include="util\hooking\detours\mh\hde\hde32.c" />
@@ -194,11 +195,13 @@
     <ClCompile Include="util\hooking\detours\mh\trampoline.c" />
     <ClCompile Include="util\hooking\vmt\vmt.cpp" />
     <ClCompile Include="util\mem\module.h" />
+    <ClCompile Include="util\networking\networking.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bootstrap\bootstrap.h" />
     <ClInclude Include="hooks\hooks.h" />
     <ClInclude Include="spotify\spotify.h" />
+    <ClInclude Include="updates\updates.h" />
     <ClInclude Include="util\hooking\detours\detours.h" />
     <ClInclude Include="util\hooking\detours\mh\buffer.h" />
     <ClInclude Include="util\hooking\detours\mh\hde\hde32.h" />
@@ -211,6 +214,9 @@
     <ClInclude Include="util\hooking\hooking.h" />
     <ClInclude Include="util\hooking\vmt\vmt.h" />
     <ClInclude Include="util\mem\addr.h" />
+    <ClInclude Include="defines.h" />
+    <ClInclude Include="util\networking\ext\json.hpp" />
+    <ClInclude Include="util\networking\networking.h" />
     <ClInclude Include="util\util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
