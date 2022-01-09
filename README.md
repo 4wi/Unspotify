@@ -20,6 +20,10 @@ Open the folder where Spotify is installed (%APPDATA%/Spotify) and rename Spotif
 
 [![Watch the video](https://img.youtube.com/vi/_TStlwGfBpo/maxresdefault.jpg)](https://youtu.be/_TStlwGfBpo)
 
+## Community
+
+[Official discord server](https://discord.gg/U7X9kKcJzF)
+
 ## License
 
 ```
