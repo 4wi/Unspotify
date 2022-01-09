@@ -31,7 +31,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>ClangCL</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>13.0.0</LLVMToolsVersion>
+    <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -39,14 +39,14 @@
     <PlatformToolset>ClangCL</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>13.0.0</LLVMToolsVersion>
+    <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>ClangCL</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>13.0.0</LLVMToolsVersion>
+    <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -54,7 +54,7 @@
     <PlatformToolset>ClangCL</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>13.0.0</LLVMToolsVersion>
+    <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -112,6 +112,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -131,6 +132,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,6 +152,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,6 +172,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
