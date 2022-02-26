@@ -2,8 +2,8 @@
 
 // autoupdates
 
-// @note: es3n1n: v1.0.5 = 105
-#define UNSPOTIFY_VERSION 106
+// @note: es3n1n: v1.0.7 = 107
+#define UNSPOTIFY_VERSION 107
 
 #define AUTOUPDATER_DOMAIN "es3n.in"
 #define AUTOUPDATER_URL "unspotify.json"

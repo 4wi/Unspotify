@@ -29,7 +29,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
   </PropertyGroup>
@@ -44,7 +44,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
   </PropertyGroup>
@@ -110,14 +110,12 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>/MAP /MERGE:.voltbl=.data /MERGE:.retplne=.data /MERGE:.gehcont=.data /MERGE:.00cfg=.data /MERGE:_RDATA=.rdata /FORCE:UNRESOLVED %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -150,14 +148,12 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>/MAP /MERGE:.voltbl=.data /MERGE:.retplne=.data /MERGE:.gehcont=.data /MERGE:.00cfg=.data /MERGE:_RDATA=.rdata /FORCE:UNRESOLVED %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -188,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="injector\injector.h" />
+    <ClInclude Include="util\util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

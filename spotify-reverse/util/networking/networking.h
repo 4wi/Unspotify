@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <urlmon.h>
 #include <WinInet.h>
+#include <map>
 
 #include "ext/json.hpp"
 
@@ -11,8 +12,9 @@
 
 namespace util {
 	namespace networking {
+		using errorable_json_result = std::pair<nlohmann::json, bool>;
 		constexpr const char* err_json_data = "{\"error\": \"Unable to connect to server\"}";
 
-		nlohmann::json get( const char* domain, const char* url );
+		errorable_json_result get( const char* domain, const char* url );
 	}
 }

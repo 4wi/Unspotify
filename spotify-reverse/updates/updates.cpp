@@ -3,11 +3,11 @@
 
 namespace updates {
 	update_info_t poll_info( ) {
-		auto data = util::networking::get( AUTOUPDATER_DOMAIN, AUTOUPDATER_URL );
-		if ( data.find( "error" ) != data.end( ) )
+		auto [data, error] = util::networking::get( AUTOUPDATER_DOMAIN, AUTOUPDATER_URL );
+		if ( error )
 			return update_info_t {
 				.m_error = true,
-				.m_error_desc = data[ "error" ].get<std::string>( )
+				.m_error_desc = "Internal server error :shrug:"
 			};
 
 		return update_info_t {

@@ -26,5 +26,8 @@
     <ClInclude Include="injector\injector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="util\util.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

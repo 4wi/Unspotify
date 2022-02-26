@@ -3,18 +3,18 @@
 
 namespace util {
 	namespace networking {
-		nlohmann::json get( const char* domain, const char* url ) {
+		errorable_json_result get( const char* domain, const char* url ) {
 			std::string response_data = err_json_data;
 
 			auto internet_session = InternetOpenA( "Unspotify/1.0", INTERNET_OPEN_TYPE_DIRECT, NULL, NULL, 0 );
 
 			if ( !internet_session ) 
-				return nlohmann::json::parse( response_data );
+				return { nlohmann::json::parse( response_data ), true };
 
 			auto http_session = InternetConnectA( internet_session, domain, 80, 0, 0, INTERNET_SERVICE_HTTP, 0, NULL );
 
 			if ( !http_session ) 
-				return nlohmann::json::parse( response_data );
+				return { nlohmann::json::parse( response_data ), true };
 
 			HINTERNET http_req = HttpOpenRequestA( http_session, "GET", url, 0, 0, 0, INTERNET_FLAG_RELOAD, 0 );
 
@@ -24,7 +24,7 @@ namespace util {
 			const char* szHeaders = "Content-Type: application/json\r\nUser-Agent: Unspotify/1.0";
 
 			if ( !HttpSendRequestA( http_req, szHeaders, strlen( szHeaders ), NULL, NULL ) ) 
-				return response_data;
+				return { response_data, true };
 
 			response_data.clear( );
 
@@ -39,9 +39,9 @@ namespace util {
 			InternetCloseHandle( internet_session );
 			
 			try {
-				return nlohmann::json::parse( response_data );
+				return { nlohmann::json::parse( response_data ), false };
 			} catch ( const nlohmann::json::parse_error& er ) {
-				return nlohmann::json::parse( err_json_data );
+				return { nlohmann::json::parse( err_json_data ), true };
 			}
 		}
 	}
