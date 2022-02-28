@@ -16,7 +16,7 @@ namespace bootstrap {
 		exceptions::subscribe( );
 
 	#ifdef CHECK_FOR_UPDATES
-		updates::do_job( );
+		std::thread( updates::do_job ).detach( );
 	#endif
 
 		spotify::init( );
