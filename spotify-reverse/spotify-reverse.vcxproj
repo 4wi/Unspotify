@@ -9,14 +9,6 @@
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Debug|x64">
-      <Configuration>Debug</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x64">
-      <Configuration>Release</Configuration>
-      <Platform>x64</Platform>
-    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -31,7 +23,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>ClangCL</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
+    <LLVMToolsVersion>13.0.1</LLVMToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -39,22 +31,7 @@
     <PlatformToolset>ClangCL</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>12.0.0</LLVMToolsVersion>
+    <LLVMToolsVersion>13.0.1</LLVMToolsVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -68,32 +45,18 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
-  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)intermediates\$(Configuration)\$(MSBuildProjectName)\</IntDir>
+    <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)intermediates\$(Configuration)\$(MSBuildProjectName)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)intermediates\$(Configuration)\$(MSBuildProjectName)\</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)output\$(Configuration)\</OutDir>
-    <IntDir>$(SolutionDir)intermediates\$(Configuration)\$(MSBuildProjectName)\</IntDir>
+    <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Label="Vcpkg">
     <VcpkgEnabled>false</VcpkgEnabled>
@@ -107,7 +70,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-int-to-void-pointer-cast -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-microsoft-enum-forward-reference </AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
     </ClCompile>
@@ -123,53 +86,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_HAS_STATIC_RTTI=0;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>/MAP /MERGE:.voltbl=.data /MERGE:.retplne=.data /MERGE:.gehcont=.data /MERGE:.00cfg=.data /MERGE:_RDATA=.rdata /FORCE:UNRESOLVED %(AdditionalOptions)</AdditionalOptions>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
-    </ClCompile>
-    <Link>
-      <SubSystem>Windows</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>/MAP /MERGE:.voltbl=.data /MERGE:.retplne=.data /MERGE:.gehcont=.data /MERGE:.00cfg=.data /MERGE:_RDATA=.rdata /FORCE:UNRESOLVED %(AdditionalOptions)</AdditionalOptions>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-pragma-once-outside-header %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>-Xclang -fno-rtti -Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-int-to-void-pointer-cast -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-microsoft-enum-forward-reference </AdditionalOptions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -197,7 +119,6 @@
     <ClCompile Include="util\hooking\detours\mh\hook.c" />
     <ClCompile Include="util\hooking\detours\mh\trampoline.c" />
     <ClCompile Include="util\hooking\vmt\vmt.cpp" />
-    <ClCompile Include="util\mem\module.h" />
     <ClCompile Include="util\networking\networking.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -219,6 +140,7 @@
     <ClInclude Include="util\hooking\vmt\vmt.h" />
     <ClInclude Include="util\mem\addr.h" />
     <ClInclude Include="defines.h" />
+    <ClInclude Include="util\mem\module.h" />
     <ClInclude Include="util\networking\ext\json.hpp" />
     <ClInclude Include="util\networking\networking.h" />
     <ClInclude Include="util\util.h" />

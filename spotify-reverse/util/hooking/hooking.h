@@ -1,3 +1,3 @@
 #pragma once
-#include "vmt/vmt.h"
 #include "detours/detours.h"
+#include "vmt/vmt.h"

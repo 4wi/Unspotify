@@ -1,9 +1,7 @@
 #pragma once
 #include "hooking/hooking.h"
-#include "shared/logger.h"
 #include "mem/addr.h"
 #include "mem/module.h"
+#include "shared/logger.h"
 
-
-namespace util {}
-
+namespace util { }
