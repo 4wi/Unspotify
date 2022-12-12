@@ -42,9 +42,6 @@
     <ClCompile Include="util\hooking\detours\detours.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="util\hooking\vmt\vmt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="hooks\hooks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,9 +102,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="util\hooking\detours\detours.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="util\hooking\vmt\vmt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="util\hooking\hooking.h">

@@ -1,15 +1,15 @@
 #include "spotify.h"
 
-#define ASSERT_PATTERN(s)                                                                                                                                 \
-    if (!addr::##s.valid())                                                                                                                               \
+#define ASSERT_PATTERN(s)   \
+    if (!addr::##s.valid()) \
         util::logger::fatal("Pattern %s not found. Please update your Unspotify version", #s);
-#define ASSERT_PATTERN_STEP(s)                                                                                                                            \
-    if (!s)                                                                                                                                               \
+#define ASSERT_PATTERN_STEP(s) \
+    if (!s)                    \
     util::logger::fatal("Unable to find %s at %d", #s, __LINE__)
 
 namespace spotify {
     void init() {
-#pragma warning(disable : 5103)
+#pragma warning(disable:5103)
         TRACE_FN;
 
         modules::spotify = util::mem::module_t(nullptr);
@@ -67,7 +67,7 @@ namespace spotify {
             addr::create_track = addr::create_track.add(1); // skip aligns
         util::logger::debug("addr::create_track = 0x%p", addr::create_track);
         ASSERT_PATTERN(create_track);
-#pragma warning(default : 5103)
+#pragma warning(default:5103)
     }
 } // namespace spotify
 

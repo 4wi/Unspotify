@@ -21,7 +21,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>ClangCL</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <LLVMToolsVersion>13.0.1</LLVMToolsVersion>
   </PropertyGroup>
@@ -31,7 +31,7 @@
     <PlatformToolset>ClangCL</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <LLVMToolsVersion>13.0.1</LLVMToolsVersion>
+    <LLVMToolsVersion>15.0.1</LLVMToolsVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -70,14 +70,15 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalOptions>-Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-int-to-void-pointer-cast -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-microsoft-enum-forward-reference </AdditionalOptions>
+      <AdditionalOptions>
+      </AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>/MAP /MERGE:.voltbl=.data /MERGE:.retplne=.data /MERGE:.gehcont=.data /MERGE:.00cfg=.data /MERGE:_RDATA=.rdata /FORCE:UNRESOLVED %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,13 +94,14 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <AdditionalOptions>-Xclang -fno-rtti -Xclang -Ofast -Xclang -fno-threadsafe-statics -Xclang -fdelayed-template-parsing -fcf-protection=none -mllvm -pgso -Wno-int-to-void-pointer-cast -Wno-missing-braces -Wno-deprecated-volatile -Wno-missing-field-initializers -Wno-ignored-pragma-optimize /clang:-fno-unwind-tables /clang:-ffast-math /clang:-fno-builtin -Wno-gnu-string-literal-operator-template -Wno-unused-private-field -Wno-invalid-token-paste -Wno-microsoft-cast -Wno-unused-command-line-argument -Wno-sign-compare -Wno-multichar -Wno-unused-parameter -Wno-microsoft-enum-forward-reference </AdditionalOptions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>/MAP /MERGE:.voltbl=.data /MERGE:.retplne=.data /MERGE:.gehcont=.data /MERGE:.00cfg=.data /MERGE:_RDATA=.rdata /FORCE:UNRESOLVED %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MAP /MERGE:.voltbl=.data /MERGE:.retplne=.data /MERGE:.gehcont=.data /MERGE:.00cfg=.data /MERGE:_RDATA=.rdata /FORCE:UNRESOLVED /pdbaltpath:%_PDB% %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -118,7 +120,6 @@
     <ClCompile Include="util\hooking\detours\mh\hde\hde64.c" />
     <ClCompile Include="util\hooking\detours\mh\hook.c" />
     <ClCompile Include="util\hooking\detours\mh\trampoline.c" />
-    <ClCompile Include="util\hooking\vmt\vmt.cpp" />
     <ClCompile Include="util\networking\networking.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -137,7 +138,6 @@
     <ClInclude Include="util\hooking\detours\mh\minhook.h" />
     <ClInclude Include="util\hooking\detours\mh\trampoline.h" />
     <ClInclude Include="util\hooking\hooking.h" />
-    <ClInclude Include="util\hooking\vmt\vmt.h" />
     <ClInclude Include="util\mem\addr.h" />
     <ClInclude Include="defines.h" />
     <ClInclude Include="util\mem\module.h" />

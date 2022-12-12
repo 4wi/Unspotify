@@ -1,21 +1,22 @@
-#include "exceptions.h"
-#include "../bootstrap/bootstrap.h"
-#include "shared/logger.h"
 #include <iostream>
 #include <sstream>
 #include <string>
 
+#include "bootstrap/bootstrap.h"
+#include "exceptions/exceptions.h"
+#include "shared/logger.h"
+
 namespace exceptions {
     LONG __stdcall handler(EXCEPTION_POINTERS* info) {
-        static bool logged { false };
+        static bool logged{false};
 
         if (logged)
             return EXCEPTION_CONTINUE_SEARCH; // @note: es3n1n: log exceptions only once
 
         auto exc_addr = reinterpret_cast<uintptr_t>(info->ExceptionRecord->ExceptionAddress);
 
-        if ((exc_addr < reinterpret_cast<uintptr_t>(bootstrap::detail::dll_handle)
-                || exc_addr > (reinterpret_cast<uintptr_t>(bootstrap::detail::dll_handle) + bootstrap::detail::region_size))) {
+        if ((exc_addr < reinterpret_cast<uintptr_t>(bootstrap::detail::dll_handle) ||
+             exc_addr > (reinterpret_cast<uintptr_t>(bootstrap::detail::dll_handle) + bootstrap::detail::region_size))) {
             return EXCEPTION_CONTINUE_SEARCH; // @note: es3n1n: log exceptions only from our mod
         }
 
@@ -28,6 +29,7 @@ namespace exceptions {
         log_msg << "ECX: " << std::hex << std::showbase << info->ContextRecord->Ecx << " | EDX: " << info->ContextRecord->Edx << std::endl;
         log_msg << "EBP: " << std::hex << std::showbase << info->ContextRecord->Ebp << " | ESP: " << info->ContextRecord->Esp << std::endl;
         log_msg << "ESI: " << std::hex << std::showbase << info->ContextRecord->Esi << " | EDI: " << info->ContextRecord->Edi << std::endl;
+        log_msg << std::endl << "PLEASE PRESS CTRL+C AND REPORT THIS ERROR IN OUR DISCORD" << std::endl;
 
         util::logger::fatal(log_msg.str().c_str());
 
@@ -35,5 +37,7 @@ namespace exceptions {
         return EXCEPTION_EXECUTE_HANDLER;
     }
 
-    void subscribe() { AddVectoredExceptionHandler(1, handler); }
+    void subscribe() {
+        AddVectoredExceptionHandler(1, handler);
+    }
 } // namespace exceptions

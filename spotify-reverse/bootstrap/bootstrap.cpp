@@ -1,10 +1,10 @@
 #include "bootstrap.h"
-#include "../exceptions/exceptions.h"
-#include "../hooks/hooks.h"
-#include "../spotify/spotify.h"
-#include "../updates/updates.h"
-#include "../util/util.h"
+#include "exceptions/exceptions.h"
+#include "hooks/hooks.h"
 #include "shared/logo.h"
+#include "spotify/spotify.h"
+#include "updates/updates.h"
+#include "util/util.h"
 
 #include <thread>
 

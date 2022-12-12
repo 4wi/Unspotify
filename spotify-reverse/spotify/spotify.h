@@ -1,20 +1,18 @@
 #pragma once
-#include "../util/util.h"
+#include "util/util.h"
 
 namespace spotify {
     namespace structs {
         struct player_meta_t {
         private:
             char __pad[0x74];
-
         public:
             std::uint32_t m_should_skip;
         };
 
         struct player_track_meta_t {
         private:
-            char __pad[0x48];
-
+            char __pad[0x98];
         public:
             const char* m_track_uri;
         };

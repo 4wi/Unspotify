@@ -7,17 +7,21 @@ namespace util::mem {
     public:
         //
         // constructors etc...
-        memory_address_t() : m_ptr(ptr_type(0)) {};
-        memory_address_t(ptr_type v) : m_ptr(v) {};
-        memory_address_t(void* v) : m_ptr(ptr_type(v)) {};
-        memory_address_t(const void* v) : m_ptr(ptr_type(v)) {};
+        memory_address_t(): m_ptr(ptr_type(0)){};
+        memory_address_t(ptr_type v): m_ptr(v){};
+        memory_address_t(void* v): m_ptr(ptr_type(v)){};
+        memory_address_t(const void* v): m_ptr(ptr_type(v)){};
         ~memory_address_t() = default;
 
         //
         // operators
-        inline operator ptr_type() { return m_ptr; }
+        inline operator ptr_type() {
+            return m_ptr;
+        }
 
-        inline operator void*() { return reinterpret_cast<void*>(m_ptr); }
+        inline operator void*() {
+            return reinterpret_cast<void*>(m_ptr);
+        }
 
         inline memory_address_t& operator+=(ptr_type offset) {
             m_ptr += offset;
@@ -29,19 +33,33 @@ namespace util::mem {
             return *this;
         }
 
-        inline memory_address_t operator-(ptr_type offset) { return memory_address_t<ptr_type>(m_ptr - offset); }
+        inline memory_address_t operator-(ptr_type offset) {
+            return memory_address_t<ptr_type>(m_ptr - offset);
+        }
 
-        inline memory_address_t operator+(ptr_type offset) { return add(offset); }
+        inline memory_address_t operator+(ptr_type offset) {
+            return add(offset);
+        }
 
-        inline bool operator>(ptr_type v2) { return m_ptr > v2; }
+        inline bool operator>(ptr_type v2) {
+            return m_ptr > v2;
+        }
 
-        inline bool operator>=(ptr_type v2) { return m_ptr >= v2; }
+        inline bool operator>=(ptr_type v2) {
+            return m_ptr >= v2;
+        }
 
-        inline bool operator<(ptr_type v2) { return m_ptr < v2; }
+        inline bool operator<(ptr_type v2) {
+            return m_ptr < v2;
+        }
 
-        inline bool operator<=(ptr_type v2) { return m_ptr <= v2; }
+        inline bool operator<=(ptr_type v2) {
+            return m_ptr <= v2;
+        }
 
-        inline memory_address_t add(ptr_type offset) { return memory_address_t<ptr_type>(m_ptr + offset); }
+        inline memory_address_t add(ptr_type offset) {
+            return memory_address_t<ptr_type>(m_ptr + offset);
+        }
 
         template <typename t = uint32_t>
         inline memory_address_t rel(ptr_type offset) {
@@ -50,7 +68,9 @@ namespace util::mem {
 
         //
         // utils
-        memory_address_t<ptr_type> offset(ptr_type off) { return memory_address_t<ptr_type>(m_ptr + off); }
+        memory_address_t<ptr_type> offset(ptr_type off) {
+            return memory_address_t<ptr_type>(m_ptr + off);
+        }
 
         template <typename T>
         T read() {
@@ -103,10 +123,13 @@ namespace util::mem {
             return memory_address_t<ptr_type>();
         }
 
-        inline bool valid() { return static_cast<bool>(m_ptr) && m_ptr > 15; }
+        inline bool valid() {
+            return static_cast<bool>(m_ptr) && m_ptr > 15;
+        }
 
-        ptr_type raw() { return m_ptr; }
-
+        ptr_type raw() {
+            return m_ptr;
+        }
     private:
         ptr_type m_ptr;
     };

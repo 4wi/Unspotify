@@ -1,4 +1,4 @@
-#include "../hooks.h"
+#include "hooks/hooks.h"
 
 namespace hooks {
     namespace hooked {

@@ -4,13 +4,13 @@ namespace updates {
     update_info_t poll_info() {
         auto [data, error] = util::networking::get(AUTOUPDATER_DOMAIN, AUTOUPDATER_URL);
         if (error)
-            return update_info_t { .m_error = true, .m_error_desc = "Internal server error :shrug:" };
+            return update_info_t{.m_error = true, .m_error_desc = "Internal server/app error :shrug:"};
 
-        return update_info_t { .m_error = false,
-            .m_version = data["version"].get<uint32_t>(),
-            .m_changelog = data["changelog"].get<std::string>(),
-            .m_is_required = data["required"].get<bool>(),
-            .m_download_url = data["download_url"].get<std::string>() };
+        return update_info_t{.m_error = false,
+                             .m_version = data["version"].get<uint32_t>(),
+                             .m_changelog = data["changelog"].get<std::string>(),
+                             .m_is_required = data["required"].get<bool>(),
+                             .m_download_url = data["download_url"].get<std::string>()};
     }
 
     void do_job() {
@@ -25,7 +25,7 @@ namespace updates {
 
         if (update_info.m_is_required) {
             util::logger::fatal("New version is available!\n\nChangelog:\n%s\nDownload url: %s", update_info.m_changelog.c_str(),
-                update_info.m_download_url.c_str());
+                                update_info.m_download_url.c_str());
             return;
         }
 

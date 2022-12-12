@@ -1,7 +1,7 @@
 #pragma once
-#include "../defines.h"
-#include "../util/networking/networking.h"
+#include "defines.h"
 #include "shared/logger.h"
+#include "util/networking/networking.h"
 
 namespace updates {
     struct update_info_t {

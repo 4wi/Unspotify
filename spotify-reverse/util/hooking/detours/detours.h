@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../mem/addr.h"
 #include "mh/minhook.h"
+#include "util/mem/addr.h"
 
 namespace util::hooking::detour {
     bool init();
