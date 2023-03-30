@@ -12,7 +12,7 @@ namespace spotify {
 
         struct player_track_meta_t {
         private:
-            char __pad[0x98];
+            char __pad[0xB0];
         public:
             const char* m_track_uri;
         };

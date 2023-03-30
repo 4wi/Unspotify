@@ -2,22 +2,23 @@
 #include <Windows.h>
 #include <cstdint>
 #include <functional>
+#include <mutex>
 #include <stdio.h>
 
 #define L_ERROR(...) util::logger::error(__FUNCTION__ "(): " __VA_ARGS__);
 #define TRACE_FN util::logger::debug("%s()", __FUNCTION__);
 
-#define LOGGER_PARSE_FMT                                                                                                                                  \
-    char buf[2048];                                                                                                                                       \
-    va_list va;                                                                                                                                           \
-    va_start(va, fmt);                                                                                                                                    \
-    _vsnprintf_s(buf, 1024, fmt, va);                                                                                                                     \
+#define LOGGER_PARSE_FMT              \
+    char buf[2048];                   \
+    va_list va;                       \
+    va_start(va, fmt);                \
+    _vsnprintf_s(buf, 1024, fmt, va); \
     va_end(va);
 
-#define CREATE_LOGGER_METHOD(n)                                                                                                                           \
-    inline void n(const char* fmt, ...) {                                                                                                                 \
-        LOGGER_PARSE_FMT;                                                                                                                                 \
-        log(#n, e_level_color::level_color_##n, buf);                                                                                                     \
+#define CREATE_LOGGER_METHOD(n)                       \
+    inline void n(const char* fmt, ...) {             \
+        LOGGER_PARSE_FMT;                             \
+        log(#n, e_level_color::level_color_##n, buf); \
     }
 
 namespace util {
@@ -45,7 +46,9 @@ namespace util {
                 SetConsoleTextAttribute(m_console_handle, clr);
             }
 
-            inline void reset() { apply(static_cast<uint32_t>(e_level_color::level_color_none)); }
+            inline void reset() {
+                apply(static_cast<uint32_t>(e_level_color::level_color_none));
+            }
 
             inline void colorify(uint32_t clr, std::function<void()> cb) {
                 apply(clr);
@@ -54,7 +57,13 @@ namespace util {
             }
         } // namespace _colors
 
+        namespace {
+            inline std::mutex _mtx;
+        }
+
         inline void log(const char* prefix, e_level_color level, const char* message) {
+            std::lock_guard<std::mutex> _lock(_mtx);
+
             _colors::colorify(static_cast<uint32_t>(level), [prefix]() -> void { printf("%s >> ", prefix); });
 
             printf("%s\n", message);

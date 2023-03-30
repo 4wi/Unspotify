@@ -45,7 +45,7 @@ namespace spotify {
         ASSERT_PATTERN_STEP(sig);
         do {
             sig = sig.walk_back_until(0xC2 /* retn */);
-        } while (sig.offset(-5).read<uint8_t>() != 0xE8 && sig.offset(-8).read<uint8_t>() != 0xE8);
+        } while (sig.offset(-5).read<uint8_t>() != 0xE8 && sig.offset(-8).read<uint8_t>() != 0xE8 && sig.offset(-9).read<uint8_t>() != 0xE8);
         addr::get_ad = sig.add(1).read<uint8_t>() == 0x68 /* push */ ? sig.add(1) : sig.walk_until(0x68 /* push 0D4h */);
         util::logger::debug("addr::get_ad = 0x%p", addr::get_ad);
         ASSERT_PATTERN(get_ad);
